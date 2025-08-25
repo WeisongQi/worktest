@@ -29,12 +29,12 @@ jobs:
     if: success()
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
 
       - name: SSH Setup
         run: |
           mkdir -p ~/.ssh
-          echo "${{secrets.KEYSSHGOOGLE}}" > ~/.ssh/meinPrivateKey
+          echo " ${{secrets.KEYSSHGOOGLE}} " > ~/.ssh/meinPrivateKey
           chmod 400 ~/.ssh/meinPrivateKey
           ssh-keyscan -H ${{secrets.G_CLOUD_DONG_IP}} >> ~/.ssh/known_hosts
 
