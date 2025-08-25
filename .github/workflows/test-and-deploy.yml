@@ -1,0 +1,43 @@
+name: Test and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: success()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: SSH Setup
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{secrets.KEYSSHGOOGLE}}" > ~/.ssh/meinPrivateKey
+          chmod 400 ~/.ssh/meinPrivateKey
+          ssh-keyscan -H ${{secrets.G_CLOUD_DONG_IP}} >> ~/.ssh/known_hosts
+
+      - name: Copy to G_C
+        run: |
+          scp -i ~/.ssh/meinPrivateKey src/mehrwertsteuer.js ${{secrets.G_YONGHU}}@${{secrets.G_CLOUD_DONG_IP}}:/home/${{secrets.G_YONGHU}}destination/c

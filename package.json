@@ -1,0 +1,15 @@
+{
+  "name": "worktest",
+  "version": "1.0.0",
+  "description": "A project to calculate VAT and automate deployment using GitHub Actions.",
+  "main": "src/mehrwertsteuer.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^27.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
