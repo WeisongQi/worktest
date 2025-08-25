@@ -40,4 +40,4 @@ jobs:
 
       - name: Copy to G_C
         run: |
-          scp -i ~/.ssh/meinPrivateKey src/mehrwertsteuer.js ${{secrets.G_YONGHU}}@${{secrets.G_CLOUD_DONG_IP}}:/home/${{secrets.G_YONGHU}}destination/c
+          scp -i ~/.ssh/meinPrivateKey src/mehrwertsteuer.js ${{secrets.G_YONGHU}}@${{secrets.G_CLOUD_DONG_IP}}:/home/${{secrets.G_YONGHU}}/c
