@@ -4,7 +4,7 @@
   "description": "A project to calculate VAT and automate deployment using GitHub Actions.",
   "main": "src/mehrwertsteuer.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "dependencies": {},
   "devDependencies": {
